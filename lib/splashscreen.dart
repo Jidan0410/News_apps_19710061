@@ -1,88 +1,54 @@
-import 'dart:async';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:news_apps_19710061/main.dart';
+import 'package:news_apps_19710061/services/navigation.dart';
 
-import 'main.dart';
-
-class SplashScreenPage extends StatefulWidget {
-  const SplashScreenPage({Key key}) : super(key: key);
-
-  @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
+class SplashScreen extends StatefulWidget {
+  _SplashScreen createState() => _SplashScreen();
 }
 
-class _SplashScreenPageState extends State<SplashScreenPage> {
-  @override
+class _SplashScreen extends State<SplashScreen> {
   void initState() {
-    //TODO: implement iniState
     super.initState();
-    openSplashScreen();
+    splashscreenStart();
   }
 
-  openSplashScreen() async {
-    var durasiSplash = const Duration(seconds: 2);
-
-    return Timer(durasiSplash, () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return HomePage();
-      }));
+  splashscreenStart() async {
+    var duration = const Duration(seconds: 2);
+    return Timer(duration, () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HalamanPertama()),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.center,
-          ),
-          CircleAvatar(
-            radius: 50.0,
-            backgroundImage: AssetImage('assets/profile.jpg'),
-          ),
-          Text(
-            '19710061',
-            style: TextStyle(
-                fontFamily: 'Pacifico',
-                fontSize: 30.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
-          ),
-          Text(
-            'HIZKIA  AJIDAN',
-            style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
-          ),
-          Text(
-            'CEMPAKA HULU',
-            style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
-          ),
-          Text(
-            '04 - OKTOBER - 2000',
-            style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
-          ),
-          Text(
-            'SI 5A REG PAGI BANJARBARU',
-            style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
+      backgroundColor: Colors.white,
+      body: Container(
+          padding: EdgeInsets.all(30.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.article_outlined,
+                    size: 100.0,
+                    color: Colors.blue,
+                  ),
+                  Text(
+                    "News APP",
+                    style: TextStyle(fontSize: 20, color: Colors.black54),
+                  ),
+                ],
+              )
+            ],
+          )),
     );
   }
 }
